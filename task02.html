@@ -11,25 +11,26 @@
     <script type="text/javascript">
       function getBlockMatrix() {
         const num = document.getElementById('matrixNum').value;
+        const intnum = parseInt(num, 10)
 
         for (let row = 0; row < num; row++) {
-          const divElement = document.createElement('div');
-          const hght = num + num/5;
+          const rowDivElement = document.createElement('div');
+          const rowDivHeight = intnum + 8;
 
-          divElement.style.height = hght + "px";
+          rowDivElement.style.height = rowDivHeight + "px";
 
           for (let column = 0; column < num; column++) {
-            const divElement2 = document.createElement('div');
+            const blockDivElement = document.createElement('div');
 
-            divElement2.style.height = num + "px";
-            divElement2.style.width = num + "px";
-            divElement2.style.float = "left";
-            divElement2.style.margin = "10px";
-            divElement2.style.backgroundColor = getRandomColor();
-            divElement.appendChild(divElement2);
+            blockDivElement.style.height = num + "px";
+            blockDivElement.style.width = num + "px";
+            blockDivElement.style.float = "left";
+            blockDivElement.style.margin = "3px";
+            blockDivElement.style.backgroundColor = getRandomColor();
+            rowDivElement.appendChild(blockDivElement);
           }
 
-          document.body.appendChild(divElement);
+          document.body.appendChild(rowDivElement);
         }
       }
 

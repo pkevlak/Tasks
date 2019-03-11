@@ -11,7 +11,7 @@
     frame(['Create', 'a', 'frame'], '+');
     function frame(arr, sym) {
       let str = '';
-      let indexfor = 0;
+      let wordIndex = 0;
       const lngst = findLongestWord(arr);
 
       for(let index = 0; index < arr.length + 2; index++){
@@ -20,12 +20,12 @@
             str += sym;
           }
         } else {
-          str += sym + " " + arr[indexfor];
-          for(let index3 = 0; index3 < lngst - arr[indexfor].length; index3++){
+          str += sym + " " + arr[wordIndex];
+          for(let index3 = 0; index3 < lngst - arr[wordIndex].length; index3++){
             str += " ";
           }
           str += " " + sym;
-          indexfor++;
+          wordIndex++;
         }
         console.log(str);
         str = '';
