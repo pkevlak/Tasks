@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <script type="text/javascript">
+
+    const arr = [1, 2, 3, 4, 5, 6, 7, 8];
+    const twoDimArr = getDoubleArr(arr, 2);
+
+    console.log(twoDimArr);
+
+    function getDoubleArr(input, size) {
+      let elementNum = 0;
+      let arrNum = -1;
+      const lngth = input.length;
+      const twoDimArr = [];
+
+      for(let index = 0; index < lngth; index++){
+        if(elementNum = index % size) {
+          twoDimArr[arrNum][elementNum] = input[index];
+        } else {
+          twoDimArr[++arrNum] = [input[index]];
+        }
+      }
+
+      return twoDimArr;
+    }
+    </script>
+  </body>
+</html>

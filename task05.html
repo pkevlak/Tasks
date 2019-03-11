@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <script type="text/javascript">
+
+    const arr = [1, 2, 3, 4, 5, 6, 9, 7];
+    const ind = getArrInd(arr, 8);
+
+    console.log(ind);
+    function getArrInd(input, num) {
+      let arrInd;
+      const srtArr = input.sort(function(a, b) {
+        return a - b;
+      });
+
+      if(num < srtArr[0]){
+        arrInd = 0;
+      } else {
+        if(num > srtArr[srtArr.length - 1]) {
+          arrInd = srtArr.length;
+        } else {
+          for(let index = 1; index <= input.length; index++){
+            if(num > srtArr[index - 1] && num < srtArr[index]){
+              arrInd = index;
+            }
+          }
+        }
+      }
+
+      return arrInd;
+}
+    </script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <input type="text" id="wordArr">
+    <button onclick="getShortestWord()" type="button">Отправить</button>
+    <div id='result'></div>
+
+    <script type="text/javascript">
+      function getShortestWord() {
+        let shortestWord = 10000;
+        const wordArr = document.getElementById('wordArr').value;
+        const wordSplit = wordArr.split(' ');
+
+        for(let i = 0; i < wordSplit.length; i++){
+          if(wordSplit[i].length < shortestWord){
+            shortestWord = wordSplit[i].length;
+          }
+        }
+
+        const shrtwrd = "The shortest world length: " + shortestWord;
+        const resultDisplay = document.getElementById('result');
+
+        resultDisplay.innerHTML = shrtwrd;
+  }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <input type="text" id="matrixNum">
+    <button onclick="getBlockMatrix()" type="button">Отправить</button>
+
+    <script type="text/javascript">
+      function getBlockMatrix() {
+        const num = document.getElementById('matrixNum').value;
+
+        for (let row = 0; row < num; row++) {
+          const divElement = document.createElement('div');
+          const hght = num + num/5;
+
+          divElement.style.height = hght + "px";
+
+          for (let column = 0; column < num; column++) {
+            const divElement2 = document.createElement('div');
+
+            divElement2.style.height = num + "px";
+            divElement2.style.width = num + "px";
+            divElement2.style.float = "left";
+            divElement2.style.margin = "10px";
+            divElement2.style.backgroundColor = getRandomColor();
+            divElement.appendChild(divElement2);
+          }
+
+          document.body.appendChild(divElement);
+        }
+      }
+
+      function getRandomColor() {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+
+        for (let index = 0; index < 6; index++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+
+        return color;
+      }
+    </script>
+  </body>
+</html>

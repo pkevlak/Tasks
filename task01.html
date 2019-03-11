@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form>
+    <input type="text" id="sheepNum">
+    <button onclick="getSheepStr()" type="button">Отправить</button>
+    </form>
+
+    <script type="text/javascript">
+    function getSheepStr() {
+      let sheepStr = "";
+      const num = document.getElementById('sheepNum').value;
+
+      for (let index = 1; index <= num; index++) {
+        sheepStr = sheepStr + index + " sheep..."
+      }
+
+      const br = document.createElement("br");
+
+      document.body.innerHTML += sheepStr;
+      document.body.appendChild(br);
+    }
+    </script>
+  </body>
+</html>

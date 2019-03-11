@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <script type="text/javascript">
+
+    function createHolder(arg) {
+      let obj = {}
+      obj.val = arg;
+
+      obj.getValue = function() {
+        return obj.val;
+      }
+
+      obj.setValue = function(nwval) {
+        obj.val = nwval;
+      }
+
+      return obj;
+      }
+
+      let objct = createHolder(5);
+      console.log(objct.getValue());
+      objct.setValue(2);
+      console.log(objct.getValue());
+    </script>
+  </body>
+</html>
