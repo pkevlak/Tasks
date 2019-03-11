@@ -9,7 +9,7 @@
     <script type="text/javascript">
 
     function createHolder(arg) {
-      let obj = {}
+      const obj = {}
       obj.val = arg;
 
       obj.getValue = function() {
@@ -23,7 +23,7 @@
       return obj;
       }
 
-      let objct = createHolder(5);
+      const objct = createHolder(5);
       console.log(objct.getValue());
       objct.setValue(2);
       console.log(objct.getValue());
