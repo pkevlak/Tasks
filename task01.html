@@ -10,16 +10,16 @@
     <button onclick="getSheepStr()" type="button">Отправить</button>
     </form>
 
-    <script type="text/javascript">
+    <script type='text/javascript'>
     function getSheepStr() {
-      let sheepStr = "";
+      let sheepStr = '';
       const num = document.getElementById('sheepNum').value;
 
       for (let index = 1; index <= num; index++) {
-        sheepStr = sheepStr + index + " sheep..."
+        sheepStr = `${sheepStr} ${index} sheep...`;
       }
 
-      const br = document.createElement("br");
+      const br = document.createElement('br');
 
       document.body.innerHTML += sheepStr;
       document.body.appendChild(br);

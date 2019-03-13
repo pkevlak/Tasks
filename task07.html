@@ -6,27 +6,18 @@
   </head>
   <body>
 
-    <script type="text/javascript">
+    <script type='text/javascript'>
+    function CreateHolder(val) {
 
-    function createHolder(arg) {
-      const obj = {}
-      obj.val = arg;
-
-      obj.getValue = function() {
-        return obj.val;
-      }
-
-      obj.setValue = function(nwval) {
-        obj.val = nwval;
-      }
-
-      return obj;
-      }
-
-      const objct = createHolder(5);
-      console.log(objct.getValue());
-      objct.setValue(2);
-      console.log(objct.getValue());
+    return {
+      setValue: function(newVal) { val = newVal },
+      getValue: function() { return val }
+    };
+  }
+  obj = CreateHolder(5);
+  console.log(obj.getValue());
+  obj.setValue(2);
+  console.log(obj.getValue());
     </script>
   </body>
 </html>

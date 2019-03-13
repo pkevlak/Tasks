@@ -6,33 +6,22 @@
   </head>
   <body>
 
-    <script type="text/javascript">
+    <script type='text/javascript'>
 
     const arr = [1, 2, 3, 4, 5, 6, 9, 7];
     const ind = getArrInd(arr, 8);
 
     console.log(ind);
+
     function getArrInd(input, num) {
-      let arrInd;
-      const srtArr = input.sort(function(a, b) {
-        return a - b;
-      });
 
-      if(num < srtArr[0]){
-        arrInd = 0;
-      } else {
-        if(num > srtArr[srtArr.length - 1]) {
-          arrInd = srtArr.length;
-        } else {
-          for(let index = 1; index <= input.length; index++){
-            if(num > srtArr[index - 1] && num < srtArr[index]){
-              arrInd = index;
-            }
-          }
-        }
-      }
+      input.push(num);
 
-      return arrInd;
+      const srtArr = input.sort( (a,b) => a - b );
+
+      const index = input.indexOf(num);
+
+      return index;
 }
     </script>
   </body>

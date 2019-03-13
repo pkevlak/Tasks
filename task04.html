@@ -9,24 +9,18 @@
     <script type="text/javascript">
 
     const arr = [1, 2, 3, 4, 5, 6, 7, 8];
-    const twoDimArr = getDoubleArr(arr, 2);
+    const twoDimArr = getDoubleArr(arr, 3);
 
     console.log(twoDimArr);
 
     function getDoubleArr(input, size) {
-      let elementNum = 0;
-      let arrNum = -1;
-      const lngth = input.length;
       const twoDimArr = [];
-
-      for(let index = 0; index < lngth; index++){
-        if(elementNum = index % size) {
-          twoDimArr[arrNum][elementNum] = input[index];
-        } else {
-          twoDimArr[++arrNum] = [input[index]];
-        }
+      let index = 0
+      while(index < arr.length) {
+        const arr2 = input.slice(index, index + size);
+        twoDimArr.push(arr2);
+        index += size;
       }
-
       return twoDimArr;
     }
     </script>

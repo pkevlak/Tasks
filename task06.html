@@ -6,43 +6,40 @@
   </head>
   <body>
 
-    <script type="text/javascript">
+    <script type='text/javascript'>
 
-    frame(['Create', 'a', 'frame'], '+');
+    const fr = frame(['Create', 'a', 'frame'], '+');
+    console.log(fr);
+
     function frame(arr, sym) {
+      let strFrame = '';
       let str = '';
       let wordIndex = 0;
-      const lngst = findLongestWord(arr);
+      const getLongestWord = (arrOfWords) => Math.max(...arrOfWords.map((word) => word.length));
+      const longest = getLongestWord(arr);
 
-      for(let index = 0; index < arr.length + 2; index++){
+      for(let index = 0; index < arr.length + 2; index++) {
         if(index == 0 || index == arr.length + 1){
-          for(let index2 = 0; index2 < lngst + 4; index2++){
+          for(let index2 = 0; index2 < longest + 4; index2++) {
             str += sym;
           }
         } else {
-          str += sym + " " + arr[wordIndex];
-          for(let index3 = 0; index3 < lngst - arr[wordIndex].length; index3++){
-            str += " ";
+          str += sym + ' ' + arr[wordIndex];
+          for(let index3 = 0; index3 < longest - arr[wordIndex].length; index3++) {
+            str += ' ';
           }
-          str += " " + sym;
+          str += ' ' + sym;
           wordIndex++;
         }
-        console.log(str);
+        if(index == arr.length + 1)
+        {
+          strFrame = strFrame + str;
+        } else {
+        strFrame = strFrame + str + '\n';
+      }
         str = '';
       }
-    }
-
-    function findLongestWord(str) {
-
-      let longestWord = 0;
-
-      for(let i = 0; i < str.length; i++){
-        if(str[i].length > longestWord){
-          longestWord = str[i].length;
-        }
-      }
-
-      return longestWord;
+      return strFrame
     }
     </script>
   </body>

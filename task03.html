@@ -9,19 +9,14 @@
     <button onclick="getShortestWord()" type="button">Отправить</button>
     <div id='result'></div>
 
-    <script type="text/javascript">
+    <script type='text/javascript'>
       function getShortestWord() {
-        let shortestWord = 10000;
         const wordArr = document.getElementById('wordArr').value;
         const wordSplit = wordArr.split(' ');
 
-        for(let i = 0; i < wordSplit.length; i++){
-          if(wordSplit[i].length < shortestWord){
-            shortestWord = wordSplit[i].length;
-          }
-        }
+        const getShortestWordLength = (arrOfWords) => Math.min(...arrOfWords.map((word) => word.length));
 
-        const shrtwrd = "The shortest world length: " + shortestWord;
+        const shrtwrd = 'The shortest world length: ' + getShortestWordLength(wordSplit);
         const resultDisplay = document.getElementById('result');
 
         resultDisplay.innerHTML = shrtwrd;
