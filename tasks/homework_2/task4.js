@@ -1,25 +1,19 @@
 class Dictionary {
   constructor() {}
   newEntry(key, value) {
-    Object.defineProperties(this, {
-    [key]: {
-      value: value,
-      writable: true
-    }
-  });
-}
+    this[key] = value;
+  }
 
   look(key) {
-    if(this.hasOwnProperty(key)){
-      return true;
+    if(this[key] !== undefined){
+      return this[key];
     } else {
-      return `Can't find entry for key`;
+      return `Can't find entry for ${key}`;
     }
   }
 }
 
 const dict = new Dictionary();
-dict.newEntry('name', 'Paul');
-console.log(dict.name);
-console.log(dict.look('name'));
-console.log(dict.look('notname'));
+dict.newEntry('dog', 'animal with 4 legs and tail');
+console.log(dict.look('dog'));
+console.log(dict.look('someword'));

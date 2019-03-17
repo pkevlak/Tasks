@@ -1,6 +1,9 @@
-const changeName = (arr) => { const arr2 = arr.filter((item) => item.isSubscribed == true);
-  arr2.forEach(function(element) {
+const sendEmail = (arr) => {
+  arr.forEach(function(element) {
+    if(element.isSubscribed == true)
+    {
   console.log(`${element.name}, ваш заказ принят, подробности вашего заказа в письме, которое мы отправили на ${element.email}`);
+}
 });
 }
 
@@ -20,4 +23,4 @@ const clients = [{
   isSubscribed: true,
   orders: [ 720 ]
 }];
-changeName(clients);
+sendEmail(clients);

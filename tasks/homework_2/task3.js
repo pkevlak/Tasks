@@ -1,6 +1,6 @@
-const Warrior = function(name, health = 100) {
+const Warrior = function(name) {
   this.name = name;
-  this.health = health;
+  this.health = 100;
 };
 
 Warrior.prototype.strike = function(obj, damage) {
