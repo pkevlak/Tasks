@@ -1,19 +1,16 @@
-Object.create = function(prototype, properties) {
+Object.create = function(prototype, properties){
   if(typeof prototype !== 'object' && typeof prototype !== 'null' || arguments.length == 0){
     throw new TypeError;
   } else {
-  let obj = {};
+    let obj = {};
+    obj.__proto__ = prototype;
 
-  obj.__proto__ = prototype;
-
-  if(typeof properties !== 'undefined')
-  {
-  Object.defineProperties(obj, properties);
-}
+    if(typeof properties !== 'undefined'){
+      Object.defineProperties(obj, properties);
+    }
 
   return obj;
-}
-};
+}};
 
 const citizen = {
   sleep: function(){ return "zzZ..."; },

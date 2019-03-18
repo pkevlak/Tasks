@@ -1,6 +1,8 @@
 const changeName = (arr,index,value) => {
   arr2 = [...arr];
-  arr2[index].name = value;
+  let obj = {...arr[index]};
+  obj.name = value;
+  arr2[index] = obj;
   return arr2 }
 
 const clients = [{
@@ -20,4 +22,6 @@ const clients = [{
   orders: [ 720 ]
 }];
 
-changeName(clients, 1, 'Мартин Скорсезе');
+const someArr = changeName(clients, 1, 'Мартин Скорсезе');
+console.log(someArr);
+console.log(clients);
