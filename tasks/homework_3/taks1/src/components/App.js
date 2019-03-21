@@ -9,8 +9,8 @@ const App = () => (
     <Header/>
     <MainPage
       name = 'Paul'
-      isCat = 'true'
-      isGoodWeather = 'true'
+      isCat = true
+      isGoodWeather = true
     />
     <Footer/>
   </div>
