@@ -36,10 +36,16 @@ class TodoItem extends PureComponent {
           <div className="todosConteiner">
             <img src="star_border.png" alt="starIcon" className={important ? 'starIconVisible' : 'starIconHidden'} />
             <div className={done ? 'done' : 'liNorm'}>
-              <li role="presentation" onClick={this.handleDoneTodo} className={important ? 'liImp' : 'liNorm'}><div className="todoSt">{todo}</div></li>
+              <li role="presentation" onClick={this.handleDoneTodo} className={important ? 'liImp' : 'liNorm'}>
+                <div className="todoSt">{todo}</div>
+              </li>
             </div>
-            <button className="deleteButton" type="button" onClick={this.handleButtonClick}><img alt="delete" src="Delete.png" /></button>
-            <button className={important ? 'notImportant' : 'important'} type="button" onClick={this.handleImportantBut}>{important ? 'Not important' : 'Mark important'}</button>
+            <button className="deleteButton" type="button" onClick={this.handleButtonClick}>
+              <img alt="delete" src="Delete.png" />
+            </button>
+            <button className={important ? 'notImportant' : 'important'} type="button" onClick={this.handleImportantBut}>
+              {important ? 'Not important' : 'Mark important'}
+            </button>
           </div>
           <br />
         </div>

@@ -7,13 +7,13 @@ import Filter from './Filter';
 class App extends PureComponent {
   state = {
     todos: [],
-    todosShow: [],
+    filter: 'all',
+    search: ''
   }
 
   componentDidMount() {
     const state = JSON.parse(window.localStorage.getItem('state'));
     this.setState({todos: state === null ? [] : state});
-    this.setState({todosShow: state === null ? [] : state});
   }
 
   componentDidUpdate() {
@@ -23,14 +23,12 @@ class App extends PureComponent {
 
   handleSubmitButton =
   (value) => {
-    document.getElementById('all').click();
-    this.setState(({todos}) => ({todos: [value, ...todos], todosShow: [value, ...todos]}));
+    this.setState(({todos}) => ({todos: [value, ...todos]}));
   }
 
   handleDeleteTodo =
   (id) => {
     this.setState(({todos}) => ({todos: todos.filter(todo => todo.id !== id)}));
-    this.setState(({todosShow}) => ({todosShow: todosShow.filter(todo => todo.id !== id)}));
   }
 
   handleDoneButton = id => this.setState(({todos}) => ({
@@ -54,42 +52,42 @@ class App extends PureComponent {
   }));
 
   handleSearch = (e) => {
-    if (e === '') {
-      document.getElementById('all').click();
-    } else {
-      const {todosShow} = this.state;
-      this.setState(({
-        todosShow:
-        todosShow.filter(todo => todo.todo.toLowerCase().includes(e.toLowerCase())),
-      }));
-    }
+    this.setState({
+      search: e,
+    });
   }
 
   handleFilterActive = () => {
-    const {todos} = this.state;
-    this.setState(({
-      todosShow:
-      todos.filter(todo => todo.done === false)
-    }));
+    this.setState({
+      filter: 'active'
+    });
   }
 
   handleFilterDone = () => {
-    const {todos} = this.state;
-    this.setState(({
-      todosShow:
-      todos.filter(todo => todo.done === true)
-    }));
+    this.setState({
+      filter: 'done'
+    });
   }
 
   handleFilterAll = () => {
-    const {todos} = this.state;
-    this.setState(({
-      todosShow: todos
-    }));
+    this.setState({
+      filter: 'all'
+    });
   }
 
   render() {
-    const {todosShow} = this.state;
+    const {todos, filter, search} = this.state;
+    let toShow;
+    if (filter === 'active') {
+      toShow = [...todos].filter(todo => todo.done === false);
+    }
+    if (filter === 'done') {
+      toShow = [...todos].filter(todo => todo.done === true);
+    }
+    if (filter === 'all') {
+      toShow = [...todos];
+    }
+    toShow = toShow.filter(todo => todo.todo.toLowerCase().includes(search.toLowerCase()));
 
     return (
       <div>
@@ -105,7 +103,7 @@ class App extends PureComponent {
           onSubmit={this.handleSubmitButton}
         />
         <ul className="todos">
-          {todosShow.map(todo => (
+          {toShow.map(todo => (
             <TodoItem
               key={todo.id}
               deleteTodo={this.handleDeleteTodo}
